@@ -9,6 +9,9 @@
 2. [Install](#u2)
 3. [Usage](#u3)
 4. [Read more](#u4)
+
+---
+
 <h2 id="u1">Introduction</h2>
 
 [DEMO](http://mashirosorata.vicp.io/others/Aplayer-Controler-demo/index.html)
