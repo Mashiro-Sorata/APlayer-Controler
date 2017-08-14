@@ -1,10 +1,5 @@
-<div align="center">
-<a href="http://mashirosorata.vicp.io">
-<img src="http://oty1v077k.bkt.clouddn.com/mashirosorata.jpg" alt="Me!" style="height:80px;border-radius:80px;">
-</a>
-</div>
-
 <div align="center"><h1>Aplayer Controler</h1></div>
+<div align="center"><p>Powered By [Mashiro_Sorata](http://mashirosorata.vicp.io)</p></div>
 
 ---
 
