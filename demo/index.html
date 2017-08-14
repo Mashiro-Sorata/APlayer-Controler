@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style type="text/css">
+	body{background:url(http://oty1v077k.bkt.clouddn.com/demo-background.jpg);background-repeat:no-repeat;background-size:cover;background-position: center;background-attachment:fixed;background-color:rgba(240,255,240,1);height:100%;overflow-x:hidden;text-align:center}
+	.container{text-align: center;background:rgba(240,230,140,0.8);Max-width:800px;margin:0 auto;border-radius:8px;}
+	.demo-ap{text-align:center;}
+	.aplayer{margin:0 auto;}
+	a:hover{color:#DC143C;}
+	a{color:#8B008B;}
+	.aplayer-list-index{float:left;}
+	.aplayer-list-title{float:left;}
+	#player1{width:500px;height:250px;background:rgba(255,250,240,0.5);margin:0 auto;}
+	#player2{width:500px;height:250px;background:rgba(255,250,240,0.5);margin:0 auto;}
+	.apc1-tip{background:rgba(173,255,47,0.7);width:100px;height:70px;position:absolute;right:130px;top:325px;border-radius:8px;}
+	.apc2-tip{background:rgba(173,255,47,0.7);width:100px;height:70px;position:fixed;left:130px;top:325px;border-radius:8px;}
+	</style>
+</head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+	<script src="src/APlayer.min.js"></script>
+	<script src="src/Aplayer-Controler.js"></script>
+<body>
+	<div class="container">
+		<br>
+		<br>
+		<h1>Aplayer Controler</h1>
+		<h2>A customizable aplayer controler,moe~</h2>
+		<p>Made by <a href="http://mashirosorata.vicp.io" target="_blank">Mashiro_Sorata</a>.Available on <a href="https://github.com/Mashiro-Sorata/APlayer-Controler" target="_blank">GitHub</a>.Licensed MIT.</p>
+
+		<h4>What's APlayer?</h4>
+		<p>A cute <a href="https://github.com/MoePlayer/APlayer" target="_blank">music player</a> on GitHub</p>
+		<p>Author : <a href="https://github.com/DIYgod" target="_blank">DIYGOD</a></p>
+		<h2><span class="direction"><font size="5">&larr;</font></span>DEMO<span class="direction"><font size="5">&rarr;</font></span></h2>
+		<script type="text/javascript">
+			$(window).scroll(function(){
+				if($(document).scrollTop()>20){
+					$('.direction').css('display','none');
+				}
+				else{
+					$('.direction').css('display','inline-block');
+				}
+			});
+		</script>
+		<div class="demo-ap">
+			<h4>Player-1</h4>
+			<div id="player1" class="aplayer"></div>
+			<br>
+			<h4>Player-2</h4>
+			<div id="player2" class="aplayer"></div>
+		</div>
+		<div class="demo-apc">
+			<div id="apc1" class="apc"></div>
+			<div class="apc1-tip"><span>Player-1 Controler<br><font size="5">&rarr;</font></span></div>
+			<div id="apc2" class="apc"></div>
+			<div class="apc2-tip"><span>Player-2 Controler<br><font size="5">&larr;</font></span></div>
+		</div>
+		<p></p>
+		<br>
+		<p><a href="https://github.com/MoePlayer/APlayer" target="_blank">Read More</a></p>
+		<p></p>
+		<br>
+	</div>
+	<script src="src/demo.js"></script>
+
+</body>
+</html>
