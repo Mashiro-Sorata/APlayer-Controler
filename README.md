@@ -1,5 +1,5 @@
 <div align="center"><h1>Aplayer Controler</h1></div>
-<div align="center"><img src="http://oty1v077k.bkt.clouddn.com/apc-demo-preview.png"></div>
+<div align="center"><img src="http://oty1v077k.bkt.clouddn.com/apc-new-preview.png"></div>
 <div align="center">Powered By [Mashiro_Sorata](http://mashirosorata.vicp.io)</div>
 
 ---
@@ -9,6 +9,7 @@
 2. [Install](#u2)
 3. [Usage](#u3)
 4. [Read more](#u4)
+5. [License](#u5)
 <h2 id="u1">Introduction</h2>
 
 [DEMO](http://mashirosorata.vicp.io/others/Aplayer-Controler-demo/index.html)
@@ -38,4 +39,7 @@ $ npm install aplayer-controler --save
   });
 ```
 <h2 id="u4">Read more</h2>
-Waiting...
+[Read More details](http://mashirosorata.vicp.io/APlayer-Controler——可自定义的ap控制器.html)
+
+<h2 id="u5">License</h2>
+[MIT License](https://github.com/Mashiro-Sorata/APlayer-Controler/blob/master/LICENSE)

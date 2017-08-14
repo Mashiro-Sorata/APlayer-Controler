@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>test</title>
+	<title>APC-DEMO</title>
 	<style type="text/css">
 	body{background:url(http://oty1v077k.bkt.clouddn.com/demo-background.jpg);background-repeat:no-repeat;background-size:cover;background-position: center;background-attachment:fixed;background-color:rgba(240,255,240,1);height:100%;overflow-x:hidden;text-align:center}
 	.container{text-align: center;background:rgba(240,230,140,0.8);Max-width:800px;margin:0 auto;border-radius:8px;}
@@ -14,8 +14,8 @@
 	.aplayer-list-title{float:left;}
 	#player1{width:500px;height:250px;background:rgba(255,250,240,0.5);margin:0 auto;}
 	#player2{width:500px;height:250px;background:rgba(255,250,240,0.5);margin:0 auto;}
-	.apc1-tip{background:rgba(173,255,47,0.7);width:100px;height:70px;position:absolute;right:130px;top:325px;border-radius:8px;}
-	.apc2-tip{background:rgba(173,255,47,0.7);width:100px;height:70px;position:fixed;left:130px;top:325px;border-radius:8px;}
+	.apc1-tip{background:rgba(173,255,47,0.7);width:100px;height:70px;position:absolute;right:300px;top:325px;border-radius:8px;}
+	.apc2-tip{background:rgba(173,255,47,0.7);width:100px;height:70px;position:absolute;left:300px;top:325px;border-radius:8px;}
 	</style>
 </head>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -33,14 +33,16 @@
 		<h4>What's APlayer?</h4>
 		<p>A cute <a href="https://github.com/MoePlayer/APlayer" target="_blank">music player</a> on GitHub</p>
 		<p>Author : <a href="https://github.com/DIYgod" target="_blank">DIYGOD</a></p>
-		<h2><span class="direction"><font size="5">&larr;</font></span>DEMO<span class="direction"><font size="5">&rarr;</font></span></h2>
+		<h2><span class="direction"></span>DEMO<span class="direction"></span></h2>
 		<script type="text/javascript">
 			$(window).scroll(function(){
 				if($(document).scrollTop()>20){
-					$('.direction').css('display','none');
+					$('.direction').velocity('stop').velocity({opacity: 0});
+					$('.tips').velocity('stop').velocity({opacity: 0});
 				}
 				else{
-					$('.direction').css('display','inline-block');
+					$('.direction').velocity('stop').velocity({opacity: 1});
+					$('.tips').velocity('stop').velocity({opacity: 1});
 				}
 			});
 		</script>
@@ -53,9 +55,9 @@
 		</div>
 		<div class="demo-apc">
 			<div id="apc1" class="apc"></div>
-			<div class="apc1-tip"><span>Player-1 Controler<br><font size="5">&rarr;</font></span></div>
+			<div class="apc1-tip tips"><span>Player-1 Controler<br><font size="5">&rarr;</font></span></div>
 			<div id="apc2" class="apc"></div>
-			<div class="apc2-tip"><span>Player-2 Controler<br><font size="5">&larr;</font></span></div>
+			<div class="apc2-tip tips"><span>Player-2 Controler<br><font size="5">&larr;</font></span></div>
 		</div>
 		<p></p>
 		<br>

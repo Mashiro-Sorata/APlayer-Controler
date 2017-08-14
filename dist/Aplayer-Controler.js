@@ -30,7 +30,7 @@ function APlayer_Controler(elem){
 			},
 			timeout:30, /*单位(s)->设置播放器canplay事件无响应的最长时间,该时间内按钮区域无效,超时后有效。若为0则关闭无响应提示,且按钮一直有效*/
 			showOnPhone:false,	//手机端显示开关,默认(false)为不显示
-			songrecord_log:false
+			songrecord_log:false	//控制台是否输出历史记录,默认(false)为关
 		};
 		var apc=$.extend(true,{},def_setting,elem);
 		//初始化
