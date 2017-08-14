@@ -1,5 +1,5 @@
 <div align="center"><h1>Aplayer Controler</h1></div>
-<div align="center"><p>Powered By [Mashiro_Sorata](http://mashirosorata.vicp.io)</p></div>
+<div align="center">Powered By [Mashiro_Sorata](http://mashirosorata.vicp.io)</div>
 
 ---
 
