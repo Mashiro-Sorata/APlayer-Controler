@@ -147,7 +147,7 @@ function APlayer_Controler(elem){
 
 		//定义方法
 		apc.jqdoms.init=function(){
-			if(!apc.showOnPhone && !IsPC()){
+			if(!apc.showOnPhone && apc.aplayer.isMobile){
 				apc.APC_dom.css('display','none');
 			}
 
@@ -450,7 +450,7 @@ function APlayer_Controler(elem){
 		});
 
 		//初始化结束
-		console.log('\n\n%cAP-Ctrler 1.0.0 %chttps://github.com/Mashiro-Sorata/APlayer-Controler','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
+		console.log('\n\n%cAP-Ctrler 1.0.0 %chttp://mashirosorata.vicp.io','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
 		return apc;
 	}
 	else
@@ -459,19 +459,4 @@ function APlayer_Controler(elem){
 		else
 			console.error('No Available aplayer!');
 		return;
-}
-
-function IsPC() {
-    var userAgentInfo = navigator.userAgent;
-    var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
-    var flag = true;
-    for (var v = 0; v < Agents.length; v++) {
-        if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
 }

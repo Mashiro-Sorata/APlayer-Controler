@@ -135,7 +135,7 @@ function APlayer_Controler(elem){
 		apc.jqdoms.last.css('top',apc.height/4+'px');
 		apc.jqdoms.play_pause.dom.css('top',apc.height/2+'px');
 		apc.jqdoms.next.css('top',apc.height*3/4+'px');
-		apc.jqdoms.icon.css({'width':apc.ctrl_divs_wh+'px','height':apc.ctrl_divs_wh+'px','vertical-align':'middle','text-align':'center','fill':'currentColor','overflow':'hidden'});
+		apc.jqdoms.icon.css({'width':apc.ctrl_divs_wh+'px','height':apc.ctrl_divs_wh+'px','vertical-align':'top','text-align':'center','fill':'currentColor','overflow':'hidden'});
 
 		//临时变量
 		var _flag={setmusic:false,listend:false,histy_to_now:false,paused:false,canplay:false,error:false,nolist:false,listtop:false,defmusicplay:false,flagarry:[]};
@@ -147,7 +147,7 @@ function APlayer_Controler(elem){
 
 		//定义方法
 		apc.jqdoms.init=function(){
-			if(!apc.showOnPhone && !IsPC()){
+			if(!apc.showOnPhone && apc.aplayer.isMobile){
 				apc.APC_dom.css('display','none');
 			}
 
@@ -459,19 +459,4 @@ function APlayer_Controler(elem){
 		else
 			console.error('No Available aplayer!');
 		return;
-}
-
-function IsPC() {
-    var userAgentInfo = navigator.userAgent;
-    var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
-    var flag = true;
-    for (var v = 0; v < Agents.length; v++) {
-        if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
 }
