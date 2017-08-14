@@ -450,7 +450,7 @@ function APlayer_Controler(elem){
 		});
 
 		//初始化结束
-		console.log('\n\n%cAP-Ctrler 1.0.0 %chttp://mashirosorata.vicp.io','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
+		console.log('\n\n%cAP-Ctrler 1.0.0 %chttps://github.com/Mashiro-Sorata/APlayer-Controler','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
 		return apc;
 	}
 	else
