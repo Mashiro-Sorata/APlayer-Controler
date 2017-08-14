@@ -1,6 +1,6 @@
 <div align="center"><h1>Aplayer Controler</h1></div>
 <div align="center"><img src="http://oty1v077k.bkt.clouddn.com/apc-demo-preview.png"></div>
-<div align="center">Powered By [Mashiro_Sorata](http://mashirosorata.vicp.io)</div>
+<div align="center">Powered By <a href="http://mashirosorata.vicp.io" target="_blank">Mashiro_Sorata</a></div>
 
 ---
 
