@@ -33,6 +33,8 @@ function APlayer_Controler(elem){
 			songrecord_log:false
 		};
 		var apc=$.extend(true,{},def_setting,elem);
+
+		if(apc.showOnPhone || !apc.aplayer.isMobile){
 		//初始化
 		$apc_content=$("<div class='apc_tips_top'><p></p></div>"
 						+"<div class='apc_btn' style='display: inline-block'></div>"
@@ -147,10 +149,6 @@ function APlayer_Controler(elem){
 
 		//定义方法
 		apc.jqdoms.init=function(){
-			if(!apc.showOnPhone && apc.aplayer.isMobile){
-				apc.APC_dom.css('display','none');
-			}
-
 			if(apc.tips_on){
 				this.tips.top.css(apc.tips_status.hide);
 				this.tips.bottom.css(apc.tips_status.hide);
@@ -452,6 +450,7 @@ function APlayer_Controler(elem){
 		//初始化结束
 		console.log('\n\n%cAP-Ctrler 1.0.0 %chttp://mashirosorata.vicp.io','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
 		return apc;
+		}
 	}
 	else
 		if(!$(elem.APC_dom).length)
