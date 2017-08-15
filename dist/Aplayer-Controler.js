@@ -34,422 +34,424 @@ function APlayer_Controler(elem){
 		var apc=$.extend(true,{},def_setting,elem);
 
 		if(apc.showOnPhone || !apc.aplayer.isMobile){
-		//初始化
-		$apc_content=$("<div class='apc_tips_top'><p></p></div>"
-						+"<div class='apc_btn' style='display: inline-block'></div>"
-						+"<div class='apc_tips_bottom'><p></p></div>"
-						+"<div id='apc_ctrl' class='apc_ctrl'>"
-							+"<div class='apmode'><svg class='icon' aria-hidden='true'><use  xlink:href=''></use></svg></div>"
-							+"<div class='lastsong'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-shangyishou1'></use></svg></div>"
-							+"<div class='play_pause'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-zanting'></use></svg></div>"
-							+"<div class='nextsong'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-xiayishou'></use></svg></div>"
-						+"</div></div>");
-		$(apc.APC_dom).append($apc_content);
-		apc.fixed ? $(apc.APC_dom).css('position','fixed') : $(apc.APC_dom).css('position','absolute');
-			//定义属性
-		apc.apctrler_name=$(apc.APC_dom).attr('id')!=undefined ? '#'+$(apc.APC_dom).attr('id') : '';
-		if(apc.apctrler_name=='')
-			apc.apctrler_name=$(apc.APC_dom).attr('class')!=undefined ? '.'+$(apc.APC_dom).attr('class') : '';
-		apc.aplayer_name=$($(apc.aplayer)[0].element).attr('id')!=undefined ? '#'+$($(apc.aplayer)[0].element).attr('id') : undefined;
-		if(apc.aplayer_name=='')
-		apc.aplayer_name=$($(apc.aplayer)[0].element).attr('class')!=undefined ? '.'+$($(apc.aplayer)[0].element).attr('id') : undefined;
-		apc.ap_doms={modebtn:$(apc.aplayer_name+' .aplayer-icon.aplayer-icon-mode'),list:$(apc.aplayer_name+' .aplayer-list ol li'),playbtn:$(apc.aplayer_name+' .aplayer-pic div')}
+			//初始化
+			$apc_content=$("<div class='apc_tips_top'><p></p></div>"
+							+"<div class='apc_btn' style='display: inline-block'></div>"
+							+"<div class='apc_tips_bottom'><p></p></div>"
+							+"<div id='apc_ctrl' class='apc_ctrl'>"
+								+"<div class='apmode'><svg class='icon' aria-hidden='true'><use  xlink:href=''></use></svg></div>"
+								+"<div class='lastsong'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-shangyishou1'></use></svg></div>"
+								+"<div class='play_pause'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-zanting'></use></svg></div>"
+								+"<div class='nextsong'><svg class='icon' aria-hidden='true'><use xlink:href='#icon-xiayishou'></use></svg></div>"
+							+"</div></div>");
+			$(apc.APC_dom).append($apc_content);
+			apc.fixed ? $(apc.APC_dom).css('position','fixed') : $(apc.APC_dom).css('position','absolute');
+				//定义属性
+			apc.apctrler_name=$(apc.APC_dom).attr('id')!=undefined ? '#'+$(apc.APC_dom).attr('id') : '';
+			if(apc.apctrler_name=='')
+				apc.apctrler_name=$(apc.APC_dom).attr('class')!=undefined ? '.'+$(apc.APC_dom).attr('class') : '';
+			apc.aplayer_name=$($(apc.aplayer)[0].element).attr('id')!=undefined ? '#'+$($(apc.aplayer)[0].element).attr('id') : undefined;
+			if(apc.aplayer_name=='')
+			apc.aplayer_name=$($(apc.aplayer)[0].element).attr('class')!=undefined ? '.'+$($(apc.aplayer)[0].element).attr('id') : undefined;
+			apc.ap_doms={modebtn:$(apc.aplayer_name+' .aplayer-icon.aplayer-icon-mode'),list:$(apc.aplayer_name+' .aplayer-list ol li'),playbtn:$(apc.aplayer_name+' .aplayer-pic div')}
 
-		apc.jqdoms={};
-		apc.jqdoms.tips={top:$(apc.apctrler_name+' .apc_tips_top'),bottom:$(apc.apctrler_name+' .apc_tips_bottom')};
-		apc.jqdoms.btn=$(apc.apctrler_name+' .apc_btn');
-		apc.jqdoms.ctrl=$(apc.apctrler_name+' .apc_ctrl');
-		apc.jqdoms.ctrl_divs=$(apc.apctrler_name+' .apc_ctrl div');
-		apc.jqdoms.ctrl_show=false;
-		apc.jqdoms.modes={dom:$(apc.apctrler_name+' .apmode'),icon:$(apc.apctrler_name+' .apmode svg use'),single:{'xlink:href':"#icon-danquxunhuan"},circulation:{'xlink:href':"#icon-xunhuanbofang"},order:{'xlink:href':"#icon-order"},random:{'xlink:href':"#icon-suiji"}};
-		apc.jqdoms.last=$(apc.apctrler_name+' .lastsong');
-		apc.jqdoms.play_pause={dom:$(apc.apctrler_name+' .play_pause'),icon:$(apc.apctrler_name+' .play_pause svg use'),pause:{'xlink:href':"#icon-bofang"},play:{'xlink:href':"#icon-zanting"}};
-		apc.jqdoms.next=$(apc.apctrler_name+' .nextsong');
-		apc.jqdoms.icon=$(apc.apctrler_name+' .icon');
-		apc.duration=100;
-		apc.songrecord={history:[],pointer:0};
-		apc.btn_height=apc.btn_height < 120 ? 120 : apc.btn_height;
-		apc.ctrl_wh=apc.btn_height/4;
-		apc.ctrl_divs_wh=apc.ctrl_wh-2;
-		apc.width=apc.btn_width+apc.ctrl_wh;
-		apc.height=apc.btn_height;
+			apc.jqdoms={};
+			apc.jqdoms.tips={top:$(apc.apctrler_name+' .apc_tips_top'),bottom:$(apc.apctrler_name+' .apc_tips_bottom')};
+			apc.jqdoms.btn=$(apc.apctrler_name+' .apc_btn');
+			apc.jqdoms.ctrl=$(apc.apctrler_name+' .apc_ctrl');
+			apc.jqdoms.ctrl_divs=$(apc.apctrler_name+' .apc_ctrl div');
+			apc.jqdoms.ctrl_show=false;
+			apc.jqdoms.modes={dom:$(apc.apctrler_name+' .apmode'),icon:$(apc.apctrler_name+' .apmode svg use'),single:{'xlink:href':"#icon-danquxunhuan"},circulation:{'xlink:href':"#icon-xunhuanbofang"},order:{'xlink:href':"#icon-order"},random:{'xlink:href':"#icon-suiji"}};
+			apc.jqdoms.last=$(apc.apctrler_name+' .lastsong');
+			apc.jqdoms.play_pause={dom:$(apc.apctrler_name+' .play_pause'),icon:$(apc.apctrler_name+' .play_pause svg use'),pause:{'xlink:href':"#icon-bofang"},play:{'xlink:href':"#icon-zanting"}};
+			apc.jqdoms.next=$(apc.apctrler_name+' .nextsong');
+			apc.jqdoms.icon=$(apc.apctrler_name+' .icon');
+			apc.duration=100;
+			apc.songrecord={history:[],pointer:0};
+			apc.btn_height=apc.btn_height < 120 ? 120 : apc.btn_height;
+			apc.ctrl_wh=apc.btn_height/4;
+			apc.ctrl_divs_wh=apc.ctrl_wh-2;
+			apc.width=apc.btn_width+apc.ctrl_wh;
+			apc.height=apc.btn_height;
 
 
-		if(apc.attach_right){
-			$(apc.APC_dom).css('right','0px');
-			apc.jqdoms.last.css('right','0px');
-			apc.jqdoms.next.css('right','0px');
-			apc.tips_status={show:{right: 0,opacity: 0.8},hide:{right: -apc.tips_width,opacity: 0},steady:{opacity:1},close:{display:'none'}};
-			apc.btn_status={extend:{right: apc.ctrl_wh},attach:{right: 0}};
-			apc.ctrl_status={show:{right:0,opacity: 1},hide:{right:-apc.ctrl_wh,opacity: 0}};
-			apc.mode_status={show:{right: 0,opacity: 1},hide:{right: -apc.ctrl_wh,opacity: 0}};
-			apc.play_status={show:{right: 0,opacity: 1},hide:{right: -apc.ctrl_wh,opacity: 0}};
-			apc.direction='right';
-		}
-		else{
-			$(apc.APC_dom).css('left','0px');
-			apc.jqdoms.last.css('left','0px');
-			apc.jqdoms.next.css('left','0px');
-			apc.tips_status={show:{left: 0,opacity: 0.8},hide:{left: -apc.tips_width,opacity: 0},steady:{opacity:1},close:{display:'none'}};
-			apc.btn_status={extend:{left: apc.ctrl_wh},attach:{left: 0}};
-			apc.ctrl_status={show:{left: 0,opacity: 1},hide:{left: -apc.ctrl_wh,opacity: 0}};
-			apc.mode_status={show:{left: 0,opacity: 1},hide:{left: -apc.ctrl_wh,opacity: 0}};
-			apc.play_status={show:{left: 0,opacity: 1},hide:{left: -apc.ctrl_wh,opacity: 0}};
-			apc.direction='left';
-		}
-		$(apc.APC_dom).css({'top':apc.position.top,'bottom':apc.position.bottom,'width':apc.width+'px','height':apc.height+'px'});
-		apc.jqdoms.tips.top.css({'background-color':apc.tips_color,'width':apc.tips_width+'px','height':apc.tips_height+'px','position':'absolute','top':-apc.tips_height+'px','color':'#9400D3','border-radius':'8px'});
-		apc.jqdoms.btn.css({'position':'absolute','width':apc.btn_width+'px','height':apc.btn_height+'px','background-color':'rgba(220,20,60,1)'});
-		apc.img_src.length && apc.jqdoms.btn.css({'background':'url(' + apc.img_src[Math.round(Math.random()*(apc.img_src.length-1))] + ')'});
-		apc.img_style.repeat && apc.jqdoms.btn.css('background-repeat',apc.img_style.repeat);
-		apc.img_style.position && apc.jqdoms.btn.css('background-position',apc.img_style.position);
-		apc.img_style.size && apc.jqdoms.btn.css('background-size',apc.img_style.size);
-		apc.jqdoms.btn.hover(function(){
-			apc.jqdoms.btn.css('cursor','pointer');
-		},function(){
-			apc.jqdoms.btn.css('cursor','auto');
-		});
-		apc.jqdoms.tips.bottom.css({'background-color':apc.tips_color,'width':apc.tips_width+'px','height':apc.tips_height+'px','position':'absolute','top':apc.btn_height+'px','color':'#FF4500','border-radius':'8px'});
-		apc.jqdoms.ctrl.css({'position':'absolute','width':apc.ctrl_wh+'px','height':apc.btn_height+'px'})
-		apc.jqdoms.ctrl_divs.css({'position':'absolute','width':apc.ctrl_divs_wh+'px','height':apc.ctrl_divs_wh+'px','background-color':apc.ctrls_color,'border-radius':'80px','border':'1px solid black'});
-		apc.jqdoms.modes.dom.hover(function(){
-			apc.jqdoms.modes.dom.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
-		},function(){
-			apc.jqdoms.modes.dom.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
-		});
-		apc.jqdoms.last.hover(function(){
-			apc.jqdoms.last.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
-		},function(){
-			apc.jqdoms.last.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
-		});
-		apc.jqdoms.next.hover(function(){
-			apc.jqdoms.next.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
-		},function(){
-			apc.jqdoms.next.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
-		});
-		apc.jqdoms.play_pause.dom.hover(function(){
-			apc.jqdoms.play_pause.dom.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
-		},function(){
-			apc.jqdoms.play_pause.dom.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
-		});
-		apc.jqdoms.modes.dom.css({'top':'0px'});
-		apc.jqdoms.last.css('top',apc.height/4+'px');
-		apc.jqdoms.play_pause.dom.css('top',apc.height/2+'px');
-		apc.jqdoms.next.css('top',apc.height*3/4+'px');
-		apc.jqdoms.icon.css({'width':apc.ctrl_divs_wh+'px','height':apc.ctrl_divs_wh+'px','vertical-align':'top','text-align':'center','fill':'currentColor','overflow':'hidden'});
-
-		//临时变量
-		var _flag={setmusic:false,listend:false,histy_to_now:false,paused:false,canplay:false,error:false,nolist:false,listtop:false,defmusicplay:false,flagarry:[]};
-		var _pausestr='aplayer-button aplayer-pause';
-		var _timeout;
-		var _PositionListener=[],
-			_temp_cont=[],
-			_positon=0;
-
-		//定义方法
-		apc.jqdoms.init=function(){
-			if(apc.tips_on){
-				this.tips.top.css(apc.tips_status.hide);
-				this.tips.bottom.css(apc.tips_status.hide);
-				this.tips.contupdate('on_loading');
-				_timeout=apc.timeout ? setTimeout(loadedcheck,apc.timeout*1000) : null;
-				_flag.canplay=apc.timeout ? false : true;
+			if(apc.attach_right){
+				$(apc.APC_dom).css('right','0px');
+				apc.jqdoms.last.css('right','0px');
+				apc.jqdoms.next.css('right','0px');
+				apc.tips_status={show:{right: 0,opacity: 0.8},hide:{right: -apc.tips_width,opacity: 0},steady:{opacity:1},close:{display:'none'}};
+				apc.btn_status={extend:{right: apc.ctrl_wh},attach:{right: 0}};
+				apc.ctrl_status={show:{right:0,opacity: 1},hide:{right:-apc.ctrl_wh,opacity: 0}};
+				apc.mode_status={show:{right: 0,opacity: 1},hide:{right: -apc.ctrl_wh,opacity: 0}};
+				apc.play_status={show:{right: 0,opacity: 1},hide:{right: -apc.ctrl_wh,opacity: 0}};
+				apc.direction='right';
 			}
 			else{
-				this.tips.close();
+				$(apc.APC_dom).css('left','0px');
+				apc.jqdoms.last.css('left','0px');
+				apc.jqdoms.next.css('left','0px');
+				apc.tips_status={show:{left: 0,opacity: 0.8},hide:{left: -apc.tips_width,opacity: 0},steady:{opacity:1},close:{display:'none'}};
+				apc.btn_status={extend:{left: apc.ctrl_wh},attach:{left: 0}};
+				apc.ctrl_status={show:{left: 0,opacity: 1},hide:{left: -apc.ctrl_wh,opacity: 0}};
+				apc.mode_status={show:{left: 0,opacity: 1},hide:{left: -apc.ctrl_wh,opacity: 0}};
+				apc.play_status={show:{left: 0,opacity: 1},hide:{left: -apc.ctrl_wh,opacity: 0}};
+				apc.direction='left';
 			}
-			this.btn.css(apc.btn_status.attach);
-			this.ctrl.css(apc.ctrl_status.hide);
-			this.modes.transform(apc.aplayer.mode);
-			this.play_pause.transform('pause');
-		};
+			$(apc.APC_dom).css({'top':apc.position.top,'bottom':apc.position.bottom,'width':apc.width+'px','height':apc.height+'px'});
+			apc.jqdoms.tips.top.css({'background-color':apc.tips_color,'width':apc.tips_width+'px','height':apc.tips_height+'px','position':'absolute','top':-apc.tips_height+'px','color':'#9400D3','border-radius':'8px'});
+			apc.jqdoms.btn.css({'position':'absolute','width':apc.btn_width+'px','height':apc.btn_height+'px','background-color':'rgba(220,20,60,1)'});
+			apc.img_src.length && apc.jqdoms.btn.css({'background':'url(' + apc.img_src[Math.round(Math.random()*(apc.img_src.length-1))] + ')'});
+			apc.img_style.repeat && apc.jqdoms.btn.css('background-repeat',apc.img_style.repeat);
+			apc.img_style.position && apc.jqdoms.btn.css('background-position',apc.img_style.position);
+			apc.img_style.size && apc.jqdoms.btn.css('background-size',apc.img_style.size);
+			apc.jqdoms.btn.hover(function(){
+				apc.jqdoms.btn.css('cursor','pointer');
+			},function(){
+				apc.jqdoms.btn.css('cursor','auto');
+			});
+			apc.jqdoms.tips.bottom.css({'background-color':apc.tips_color,'width':apc.tips_width+'px','height':apc.tips_height+'px','position':'absolute','top':apc.btn_height+'px','color':'#FF4500','border-radius':'8px'});
+			apc.jqdoms.ctrl.css({'position':'absolute','width':apc.ctrl_wh+'px','height':apc.btn_height+'px'})
+			apc.jqdoms.ctrl_divs.css({'position':'absolute','width':apc.ctrl_divs_wh+'px','height':apc.ctrl_divs_wh+'px','background-color':apc.ctrls_color,'border-radius':'80px','border':'1px solid black'});
+			apc.jqdoms.modes.dom.hover(function(){
+				apc.jqdoms.modes.dom.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
+			},function(){
+				apc.jqdoms.modes.dom.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
+			});
+			apc.jqdoms.last.hover(function(){
+				apc.jqdoms.last.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
+			},function(){
+				apc.jqdoms.last.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
+			});
+			apc.jqdoms.next.hover(function(){
+				apc.jqdoms.next.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
+			},function(){
+				apc.jqdoms.next.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
+			});
+			apc.jqdoms.play_pause.dom.hover(function(){
+				apc.jqdoms.play_pause.dom.css({'background-color':apc.ctrls_hover_color,'border':'2px solid black'});
+			},function(){
+				apc.jqdoms.play_pause.dom.css({'background-color':apc.ctrls_color,'border':'1px solid black'});
+			});
+			apc.jqdoms.modes.dom.css({'top':'0px'});
+			apc.jqdoms.last.css('top',apc.height/4+'px');
+			apc.jqdoms.play_pause.dom.css('top',apc.height/2+'px');
+			apc.jqdoms.next.css('top',apc.height*3/4+'px');
+			apc.jqdoms.icon.css({'width':apc.ctrl_divs_wh+'px','height':apc.ctrl_divs_wh+'px','vertical-align':'top','text-align':'center','fill':'currentColor','overflow':'hidden'});
 
-		apc.jqdoms.tips.contupdate=function(cont){
-			this.top.html(apc.tips_content[cont].top);
-			this.top.css('text-align','center');
-			this.bottom.html(apc.tips_content[cont].bottom);
-			this.bottom.css('text-align','center');
-		};
+			//临时变量
+			var _flag={setmusic:false,listend:false,histy_to_now:false,paused:false,canplay:false,error:false,nolist:false,listtop:false,defmusicplay:false,flagarry:[]};
+			var _pausestr='aplayer-button aplayer-pause';
+			var _timeout;
+			var _PositionListener=[],
+				_temp_cont=[],
+				_positon=0;
 
-		apc.jqdoms.tips.transform=function(status_begin,status_end,cont){
-			if(apc.tips_on){
-				if(apc.jqdoms.readposition('tips','bottom',apc.direction)!=-apc.tips_width+'px'){
-					this.addPositionListener(cont);
-				}
-				else
-					this.contupdate(cont);
-				this.top.velocity('stop').velocity(apc.tips_status[status_begin],apc.duration*10);
-				this.bottom.velocity('stop').velocity(apc.tips_status[status_begin],apc.duration*10);
-				this.top.velocity(apc.tips_status['steady'],apc.duration*20);
-				this.bottom.velocity(apc.tips_status['steady'],apc.duration*20);
-				this.top.velocity(apc.tips_status[status_end],apc.duration*10);
-				this.bottom.velocity(apc.tips_status[status_end],{'duration':apc.duration*10,'complete':function(){
-					if(_flag.flagarry.length)
-						_flag.flagarry[_positon]=true;
-				}});
-			}
-		};
-		//上一次信息提示栏未消失时出现新提示时，监视上一次的提示栏位置，在消失后更换内容
-		apc.jqdoms.tips.addPositionListener=function(cont){
-			_flag.flagarry.push(false);
-			_temp_cont.push(cont);
-			_PositionListener.push(setInterval(listener,10));
-		};
-
-		function listener(){
-			if(_flag.flagarry[_positon]){
-				clearInterval(_PositionListener[_positon]);
-				apc.jqdoms.tips.contupdate(_temp_cont[_positon]);
-				_positon++;
-			}
-		}
-
-		apc.jqdoms.readposition=function(domf,doml,derc){
-			return doml ? this[domf][doml].css(derc) : this[domf].css(derc);
-		};
-
-		apc.jqdoms.tips.close=function(){
-			this.top.css(apc.tips_status.close);
-			this.bottom.css(apc.tips_status.close);
-		};
-
-		apc.jqdoms.modes.transform=function(mode){
-			var tempdom=this;
-			function _delay(){
-				tempdom.icon.attr(tempdom[mode]);
-			}
-			this.dom.velocity('stop').velocity(apc.mode_status.hide,apc.duration);
-			this.dom.velocity(apc.mode_status.show,apc.duration);
-			setTimeout(_delay,apc.duration);
-		};
-
-		apc.jqdoms.play_pause.transform=function(status){
-			var tempdom=this;
-			function _delay(){
-				tempdom.icon.attr(tempdom[status]);
-			}
-			this.dom.velocity('stop').velocity(apc.play_status.hide,apc.duration);
-			this.dom.velocity(apc.play_status.show,apc.duration);
-			setTimeout(_delay,apc.duration);
-		};
-
-		apc.jqdoms.btn.transform=function(status){
-			if(status=='extend')
-				this.velocity('stop').velocity(apc.btn_status[status],apc.duration);
-			else
-				this.velocity('stop').delay(apc.duration*2).velocity(apc.btn_status[status],apc.duration);
-		};
-
-		apc.jqdoms.ctrl.transform=function(status){
-			if(status=='show')
-				this.velocity('stop').delay(apc.duration*2).velocity(apc.ctrl_status[status],apc.duration*2);
-			else
-				this.velocity('stop').velocity(apc.ctrl_status[status],apc.duration*2);
-		};
-
-		_flag.issetmusic=function(){
-			if(apc.aplayer.button.className==_pausestr)
-				this.setmusic=true;
-		};
-
-		//API
-		apc.remove=function(){
-			$apc_content.remove();
-		}
-
-
-		//初始化
-		apc.jqdoms.init();
-
-		//能够播放歌曲时的提示信息
-		apc.aplayer.on('canplay',function(){
-			if(!_flag.canplay){
-				apc.jqdoms.tips.transform('show','hide','on_welcome');
-			}
-			_flag.canplay=true;
-		});
-
-		//播放器错误信息
-		apc.aplayer.on('error',function(){
-			console.log('ap-error!');
-			_flag.error=true;
-			apc.jqdoms.tips.transform('show','hide','on_error');
-			clearTimeout(_timeout);
-		});
-
-		//播放器canplay超时提醒
-		function loadedcheck(){
-			if(!_flag.canplay && !_flag.error){
-				apc.jqdoms.tips.transform('show','hide','on_timeout');
-				_flag.canplay=true;
-			}
-		}
-
-		//按钮点击事件
-		apc.jqdoms.btn.click(function(){
-			if(_flag.canplay){
-				if(apc.jqdoms.readposition('btn','',apc.direction)=='0px' || apc.jqdoms.readposition('btn','',apc.direction)==(apc.ctrl_wh+'px')){
-					if(!apc.jqdoms.ctrl_show){
-						apc.jqdoms.btn.transform('extend');
-						apc.jqdoms.ctrl.transform('show');
-					}
-					else{
-						apc.jqdoms.btn.transform('attach');
-						apc.jqdoms.ctrl.transform('hide');
-					}
-					apc.jqdoms.ctrl_show=!apc.jqdoms.ctrl_show;
-				}
-			}
-			else if(apc.jqdoms.readposition('tips','bottom',apc.direction)==-apc.tips_width+'px'){
-				apc.jqdoms.tips.transform('show','hide','on_loading');
-			}
-		});
-
-		//控制区域
-		//下一首
-		apc.jqdoms.next.click(function(){
-			if(!apc.songrecord.pointer){
-				apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*3/2);
-				apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*3/2);
-				switch(apc.aplayer.mode){
-					case 'random':
-						_flag.issetmusic();
-						apc.aplayer.setMusic(apc.aplayer.nextRandomNum());
-						_flag.listend=false;
-						break;
-					case 'single':
-						_flag.issetmusic();
-						apc.aplayer.setMusic(apc.aplayer.playIndex);
-						_flag.listend=false;
-						break;
-					case 'order':
-						if(apc.aplayer.playIndex==apc.ap_doms.list.length-1){
-							if(!_flag.listend)
-								apc.jqdoms.tips.transform('show','hide','on_listend');
-							_flag.listend=true;
-						}
-						else{
-							_flag.issetmusic();
-							apc.aplayer.setMusic(apc.aplayer.playIndex+1);
-							_flag.listend=false;
-						}
-						break;
-					default:
-						_flag.listend=false;
-						_flag.issetmusic();
-						if(apc.aplayer.playIndex==apc.ap_doms.list.length-1){
-							apc.aplayer.setMusic(0);
-						}
-						else{
-							apc.aplayer.setMusic(apc.aplayer.playIndex+1);
-						}
-				}
-			}
-			else{
-					apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*3/2);
-					apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*3/2);
-					apc.songrecord.pointer--;
-					_flag.issetmusic();
-					apc.aplayer.setMusic(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]);
-					_flag.histy_to_now=true;
-			}
-		});
-
-		//上一首
-		apc.jqdoms.last.click(function(){
-			apc.jqdoms.last.velocity({rotateY: "-180deg"},apc.duration*2);
-			apc.jqdoms.last.velocity("reverse");
-			if(apc.songrecord.pointer!=apc.songrecord.history.length-1){
-				if(apc.songrecord.history.length){
-					apc.songrecord.pointer++;
-					_flag.issetmusic();
-          			apc.aplayer.setMusic(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]);
+			//定义方法
+			apc.jqdoms.init=function(){
+				if(apc.tips_on){
+					this.tips.top.css(apc.tips_status.hide);
+					this.tips.bottom.css(apc.tips_status.hide);
+					this.tips.contupdate('on_loading');
+					_timeout=apc.timeout ? setTimeout(loadedcheck,apc.timeout*1000) : null;
+					_flag.canplay=apc.timeout ? false : true;
 				}
 				else{
-					if(!_flag.nolist)
-						apc.jqdoms.tips.transform('show','hide','on_nohistory');
-					_flag.nolist=true;
+					this.tips.close();
+				}
+				this.btn.css(apc.btn_status.attach);
+				this.ctrl.css(apc.ctrl_status.hide);
+				this.modes.transform(apc.aplayer.mode);
+				this.play_pause.transform('pause');
+			};
+
+			apc.jqdoms.tips.contupdate=function(cont){
+				this.top.html(apc.tips_content[cont].top);
+				this.top.css('text-align','center');
+				this.bottom.html(apc.tips_content[cont].bottom);
+				this.bottom.css('text-align','center');
+			};
+
+			apc.jqdoms.tips.transform=function(status_begin,status_end,cont){
+				if(apc.tips_on){
+					if(apc.jqdoms.readposition('tips','bottom',apc.direction)!=-apc.tips_width+'px'){
+						this.addPositionListener(cont);
+					}
+					else
+						this.contupdate(cont);
+					this.top.velocity('stop').velocity(apc.tips_status[status_begin],apc.duration*10);
+					this.bottom.velocity('stop').velocity(apc.tips_status[status_begin],apc.duration*10);
+					this.top.velocity(apc.tips_status['steady'],apc.duration*20);
+					this.bottom.velocity(apc.tips_status['steady'],apc.duration*20);
+					this.top.velocity(apc.tips_status[status_end],apc.duration*10);
+					this.bottom.velocity(apc.tips_status[status_end],{'duration':apc.duration*10,'complete':function(){
+						if(_flag.flagarry.length)
+							_flag.flagarry[_positon]=true;
+					}});
+				}
+			};
+			//上一次信息提示栏未消失时出现新提示时，监视上一次的提示栏位置，在消失后更换内容
+			apc.jqdoms.tips.addPositionListener=function(cont){
+				_flag.flagarry.push(false);
+				_temp_cont.push(cont);
+				_PositionListener.push(setInterval(listener,10));
+			};
+
+			function listener(){
+				if(_flag.flagarry[_positon]){
+					clearInterval(_PositionListener[_positon]);
+					apc.jqdoms.tips.contupdate(_temp_cont[_positon]);
+					_positon++;
 				}
 			}
-			else{
-				if(!_flag.listtop)
-					apc.jqdoms.tips.transform('show','hide','on_historyend');
-				_flag.listtop=true;
-			}
-			_flag.listend=false;
-		});
 
-		//暂停/播放
-		apc.jqdoms.play_pause.dom.click(function(){
-			if(apc.aplayer.audio.paused && apc.songrecord.history.length)
-				_flag.paused=true;
-			apc.aplayer.button.click();
-		});
+			apc.jqdoms.readposition=function(domf,doml,derc){
+				return doml ? this[domf][doml].css(derc) : this[domf].css(derc);
+			};
 
-		//播放器列表
-		apc.ap_doms.list.click(function(){
-			if($(this).index()!=apc.aplayer.playIndex){
-				_flag.listend=false;
-				_flag.issetmusic();
-				_flag.paused=false;
-			}
-			else{
-				if(apc.aplayer.button.className=='aplayer-button aplayer-play'){
-					_flag.paused=true;
+			apc.jqdoms.tips.close=function(){
+				this.top.css(apc.tips_status.close);
+				this.bottom.css(apc.tips_status.close);
+			};
+
+			apc.jqdoms.modes.transform=function(mode){
+				var tempdom=this;
+				function _delay(){
+					tempdom.icon.attr(tempdom[mode]);
 				}
-			}
-		});
+				this.dom.velocity('stop').velocity(apc.mode_status.hide,apc.duration);
+				this.dom.velocity(apc.mode_status.show,apc.duration);
+				setTimeout(_delay,apc.duration);
+			};
 
-		//播放器播放事件
-		apc.aplayer.on('play',function(){
+			apc.jqdoms.play_pause.transform=function(status){
+				var tempdom=this;
+				function _delay(){
+					tempdom.icon.attr(tempdom[status]);
+				}
+				this.dom.velocity('stop').velocity(apc.play_status.hide,apc.duration);
+				this.dom.velocity(apc.play_status.show,apc.duration);
+				setTimeout(_delay,apc.duration);
+			};
 
-			if(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]!=apc.aplayer.playIndex && _flag.defmusicplay){
-				apc.songrecord.pointer=0;
-				_flag.histy_to_now=false;
-			}
-			if(!_flag.setmusic)
-				apc.jqdoms.play_pause.transform('play');
-			_flag.setmusic=false;
-
-			if(!_flag.paused && apc.aplayer.mode!='single' && !apc.songrecord.pointer){
-				if(!_flag.histy_to_now)
-					apc.songrecord.history.push(apc.aplayer.playIndex);
+			apc.jqdoms.btn.transform=function(status){
+				if(status=='extend')
+					this.velocity('stop').velocity(apc.btn_status[status],apc.duration);
 				else
-					_flag.histy_to_now=false;
+					this.velocity('stop').delay(apc.duration*2).velocity(apc.btn_status[status],apc.duration);
+			};
+
+			apc.jqdoms.ctrl.transform=function(status){
+				if(status=='show')
+					this.velocity('stop').delay(apc.duration*2).velocity(apc.ctrl_status[status],apc.duration*2);
+				else
+					this.velocity('stop').velocity(apc.ctrl_status[status],apc.duration*2);
+			};
+
+			_flag.issetmusic=function(){
+				if(apc.aplayer.button.className==_pausestr)
+					this.setmusic=true;
+			};
+
+			//API
+			apc.remove=function(){
+				$apc_content.remove();
 			}
-			else if(!_flag.defmusicplay)
-				apc.songrecord.history.push(apc.aplayer.playIndex);
-			_flag.paused=false;
 
-			if(apc.songrecord.history[0]!=apc.aplayer.playIndex && _flag.listtop)
-				_flag.listtop=false;
 
-			_flag.defmusicplay=true;
-			if(apc.songrecord_log)
-				console.info('\n'+apc.aplayer_name+'\n>record:'+apc.songrecord.history+'\n>pointer:'+apc.songrecord.pointer);
-		});
+			//初始化
+			apc.jqdoms.init();
 
-		//播放器暂停事件
-		apc.aplayer.on('pause',function(){
-			if(!_flag.setmusic)
-				apc.jqdoms.play_pause.transform('pause');
-		});
+			//能够播放歌曲时的提示信息
+			apc.aplayer.on('canplay',function(){
+				if(!_flag.canplay){
+					apc.jqdoms.tips.transform('show','hide','on_welcome');
+				}
+				_flag.canplay=true;
+			});
 
-		//模式控制
-		apc.jqdoms.modes.dom.click(function(){
-			apc.ap_doms.modebtn[0].click();
-			_flag.listend=false;
-		});
+			//播放器错误信息
+			apc.aplayer.on('error',function(){
+				console.log('ap-error!');
+				_flag.error=true;
+				apc.jqdoms.tips.transform('show','hide','on_error');
+				clearTimeout(_timeout);
+			});
 
-		//绑定aplayer的按键事件
-		apc.ap_doms.modebtn.click(function(){
-			apc.jqdoms.modes.transform(apc.aplayer.mode);
-		});
+			//播放器canplay超时提醒
+			function loadedcheck(){
+				if(!_flag.canplay && !_flag.error){
+					apc.jqdoms.tips.transform('show','hide','on_timeout');
+					_flag.canplay=true;
+				}
+			}
 
-		//初始化结束
-		console.log('\n\n%cAP-Ctrler 1.0.0 %chttp://mashirosorata.vicp.io','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
-		return apc;
+			//按钮点击事件
+			apc.jqdoms.btn.click(function(){
+				if(_flag.canplay){
+					if(apc.jqdoms.readposition('btn','',apc.direction)=='0px' || apc.jqdoms.readposition('btn','',apc.direction)==(apc.ctrl_wh+'px')){
+						if(!apc.jqdoms.ctrl_show){
+							apc.jqdoms.btn.transform('extend');
+							apc.jqdoms.ctrl.transform('show');
+						}
+						else{
+							apc.jqdoms.btn.transform('attach');
+							apc.jqdoms.ctrl.transform('hide');
+						}
+						apc.jqdoms.ctrl_show=!apc.jqdoms.ctrl_show;
+					}
+				}
+				else if(apc.jqdoms.readposition('tips','bottom',apc.direction)==-apc.tips_width+'px'){
+					apc.jqdoms.tips.transform('show','hide','on_loading');
+				}
+			});
+
+			//控制区域
+			//下一首
+			apc.jqdoms.next.click(function(){
+				if(!apc.songrecord.pointer){
+					apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*3/2);
+					apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*3/2);
+					switch(apc.aplayer.mode){
+						case 'random':
+							_flag.issetmusic();
+							apc.aplayer.setMusic(apc.aplayer.nextRandomNum());
+							_flag.listend=false;
+							break;
+						case 'single':
+							_flag.issetmusic();
+							apc.aplayer.setMusic(apc.aplayer.playIndex);
+							_flag.listend=false;
+							break;
+						case 'order':
+							if(apc.aplayer.playIndex==apc.ap_doms.list.length-1){
+								if(!_flag.listend)
+									apc.jqdoms.tips.transform('show','hide','on_listend');
+								_flag.listend=true;
+							}
+							else{
+								_flag.issetmusic();
+								apc.aplayer.setMusic(apc.aplayer.playIndex+1);
+								_flag.listend=false;
+							}
+							break;
+						default:
+							_flag.listend=false;
+							_flag.issetmusic();
+							if(apc.aplayer.playIndex==apc.ap_doms.list.length-1){
+								apc.aplayer.setMusic(0);
+							}
+							else{
+								apc.aplayer.setMusic(apc.aplayer.playIndex+1);
+							}
+					}
+				}
+				else{
+						apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*3/2);
+						apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*3/2);
+						apc.songrecord.pointer--;
+						_flag.issetmusic();
+						apc.aplayer.setMusic(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]);
+						_flag.histy_to_now=true;
+				}
+			});
+
+			//上一首
+			apc.jqdoms.last.click(function(){
+				apc.jqdoms.last.velocity({rotateY: "-180deg"},apc.duration*2);
+				apc.jqdoms.last.velocity("reverse");
+				if(apc.songrecord.pointer!=apc.songrecord.history.length-1){
+					if(apc.songrecord.history.length){
+						apc.songrecord.pointer++;
+						_flag.issetmusic();
+	          			apc.aplayer.setMusic(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]);
+					}
+					else{
+						if(!_flag.nolist)
+							apc.jqdoms.tips.transform('show','hide','on_nohistory');
+						_flag.nolist=true;
+					}
+				}
+				else{
+					if(!_flag.listtop)
+						apc.jqdoms.tips.transform('show','hide','on_historyend');
+					_flag.listtop=true;
+				}
+				_flag.listend=false;
+			});
+
+			//暂停/播放
+			apc.jqdoms.play_pause.dom.click(function(){
+				if(apc.aplayer.audio.paused && apc.songrecord.history.length)
+					_flag.paused=true;
+				apc.aplayer.button.click();
+			});
+
+			//播放器列表
+			apc.ap_doms.list.click(function(){
+				if($(this).index()!=apc.aplayer.playIndex){
+					_flag.listend=false;
+					_flag.issetmusic();
+					_flag.paused=false;
+				}
+				else{
+					if(apc.aplayer.button.className=='aplayer-button aplayer-play'){
+						_flag.paused=true;
+					}
+				}
+			});
+
+			//播放器播放事件
+			apc.aplayer.on('play',function(){
+
+				if(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]!=apc.aplayer.playIndex && _flag.defmusicplay){
+					apc.songrecord.pointer=0;
+					_flag.histy_to_now=false;
+				}
+				if(!_flag.setmusic)
+					apc.jqdoms.play_pause.transform('play');
+				_flag.setmusic=false;
+
+				if(!_flag.paused && apc.aplayer.mode!='single' && !apc.songrecord.pointer){
+					if(!_flag.histy_to_now)
+						apc.songrecord.history.push(apc.aplayer.playIndex);
+					else
+						_flag.histy_to_now=false;
+				}
+				else if(!_flag.defmusicplay)
+					apc.songrecord.history.push(apc.aplayer.playIndex);
+				_flag.paused=false;
+
+				if(apc.songrecord.history[0]!=apc.aplayer.playIndex && _flag.listtop)
+					_flag.listtop=false;
+
+				_flag.defmusicplay=true;
+				if(apc.songrecord_log)
+					console.info('\n'+apc.aplayer_name+'\n>record:'+apc.songrecord.history+'\n>pointer:'+apc.songrecord.pointer);
+			});
+
+			//播放器暂停事件
+			apc.aplayer.on('pause',function(){
+				if(!_flag.setmusic)
+					apc.jqdoms.play_pause.transform('pause');
+			});
+
+			//模式控制
+			apc.jqdoms.modes.dom.click(function(){
+				apc.ap_doms.modebtn[0].click();
+				_flag.listend=false;
+			});
+
+			//绑定aplayer的按键事件
+			apc.ap_doms.modebtn.click(function(){
+				apc.jqdoms.modes.transform(apc.aplayer.mode);
+			});
+
+			//初始化结束
+			console.log('\n\n%cAP-Ctrler 1.0.0 %chttp://mashirosorata.vicp.io','background:#2F4F4F;padding:4px;color:#FFFFF0;','background:rgba(173,216,230,0.7);padding:4px;color:#000000;');
+			return apc;
 		}
+		else
+			return;
 	}
 	else
 		if(!$(elem.APC_dom).length)
