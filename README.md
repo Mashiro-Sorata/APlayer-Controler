@@ -1,11 +1,11 @@
 <div align="center"><h1>Aplayer Controler</h1></div>
-<<<<<<< HEAD
+
 <div align="center"><img src="http://oty1v077k.bkt.clouddn.com/apc-new-preview.png"></div>
 <div align="center">Powered By [Mashiro_Sorata](http://mashirosorata.vicp.io)</div>
 =======
 <div align="center"><img src="http://oty1v077k.bkt.clouddn.com/apc-demo-preview.png"></div>
-<div align="center">Powered By <a href="http://mashirosorata.vicp.io" target="_blank">Mashiro_Sorata</a></div>
->>>>>>> 0afa155096662c4ce510b02c6882bd7cdef12dc1
+<div align="center">Powered By <a href="http://mashirosorata.vicp.io">Mashiro_Sorata</a></div>
+
 
 ---
 
@@ -14,13 +14,10 @@
 2. [Install](#u2)
 3. [Usage](#u3)
 4. [Read more](#u4)
-<<<<<<< HEAD
 5. [License](#u5)
-=======
 
 ---
 
->>>>>>> 0afa155096662c4ce510b02c6882bd7cdef12dc1
 <h2 id="u1">Introduction</h2>
 
 [DEMO](http://mashirosorata.vicp.io/others/Aplayer-Controler-demo/index.html)
