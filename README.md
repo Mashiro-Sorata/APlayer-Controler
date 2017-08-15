@@ -20,7 +20,7 @@
 
 [DEMO](http://mashirosorata.vicp.io/others/Aplayer-Controler-demo/index.html)
 
-The *Aplayer Controler* is a tool to make users control the *aplayer* more easily. <br>Enjoying with its lovely customizable interface.
+The *Aplayer Controler* is a tool to make users control the [*Aplayer*](https://github.com/MoePlayer/APlayer) more easily. <br>Enjoying with its lovely customizable interface.
 
 <h2 id="u2">Install</h2>
 
