@@ -309,8 +309,8 @@ function APlayer_Controler(elem){
 			//下一首
 			apc.jqdoms.next.click(function(){
 				if(!apc.songrecord.pointer){
-					apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*3/2);
-					apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*3/2);
+					apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*2);
+					apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*2);
 					switch(apc.aplayer.mode){
 						case 'random':
 							_flag.issetmusic();
@@ -346,8 +346,8 @@ function APlayer_Controler(elem){
 					}
 				}
 				else{
-						apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*3/2);
-						apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*3/2);
+						apc.jqdoms.next.velocity({rotateY: "180deg"},apc.duration*2);
+						apc.jqdoms.next.velocity({rotateY: "0deg"},apc.duration*2);
 						apc.songrecord.pointer--;
 						_flag.issetmusic();
 						apc.aplayer.setMusic(apc.songrecord.history[apc.songrecord.history.length-apc.songrecord.pointer-1]);
