@@ -39,11 +39,11 @@ $ npm install aplayer-controler --save
   var myap = new APlayer({......});
   var myapc=new APlayer_Controler({
     	 APC_dom:$('#myapcid'),
-	     aplayer:myap,
+	 aplayer:myap,
     	 position:{top:'300px'},
-	     img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
-		            'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
-		            'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif'],
+	 img_src:['http://oty1v077k.bkt.clouddn.com/bukagirl.jpg',
+	      	  'http://oty1v077k.bkt.clouddn.com/jumpgirl.jpg',
+		  'http://oty1v077k.bkt.clouddn.com/%E8%90%8C1.gif']
   });
 ```
 
