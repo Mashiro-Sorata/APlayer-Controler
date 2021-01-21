@@ -1,7 +1,6 @@
 <div align="center"><h1>Aplayer Controler</h1></div>
 
-<div align="center"><img src="http://oty1v077k.bkt.clouddn.com/apc-demo-preview.png"></div>
-<div align="center">Powered By <a href="http://mashirosorata.vicp.io">Mashiro_Sorata</a></div>
+<div align="center">Powered By <a href="https://mashiros.top">Mashiro_Sorata</a></div>
 
 
 ---
@@ -18,7 +17,7 @@
 
 <h2 id="u1">Introduction</h2>
 
-[DEMO](http://mashirosorata.vicp.io/others/Aplayer-Controler-demo/index.html)
+[DEMO](http://mashiros.top/others/Aplayer-Controler-demo/index.html)
 
 The *Aplayer Controler* is a tool to make users control the [*Aplayer*](https://github.com/MoePlayer/APlayer) more easily. <br>Enjoying with its lovely customizable interface.
 
@@ -108,7 +107,7 @@ var myapc=new APlayer_Controler({  //Controler Part
 
 <h2 id="u5">Read more</h2>
 
-[Read More Here](http://mashirosorata.vicp.io/APlayer-Controler——可自定义的ap控制器.html)
+[Read More Here](http://mashiros.top/APlayer-Controler——可自定义的ap控制器.html)
 
 <h2 id="u6">License</h2>
 
