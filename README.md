@@ -107,7 +107,7 @@ var myapc=new APlayer_Controler({  //Controler Part
 
 <h2 id="u5">Read more</h2>
 
-[Read More Here](http://mashiros.top/APlayer-Controler——可自定义的ap控制器.html)
+[Read More Here](https://mashiros.top/code/works/ap-contrler/apctrler)
 
 <h2 id="u6">License</h2>
 
